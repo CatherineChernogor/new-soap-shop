@@ -34,4 +34,5 @@ class ProductController extends Controller
         return //$product->name;
             view('single-product', ['product' => $product]);
     }
+
 }

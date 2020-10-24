@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,5 +19,5 @@ Route::get('/', function () {
 });
 Route::get('/home', [ProductController::class, 'show'])->middleware('auth')->name('products');
 Route::get('/product/{id}', [ProductController::class, 'view'])->middleware('auth')->name('single_product');
-Route::get('/cart', [CartController::class, 'show'])->middleware('auth')->name('cart');
+Route::get('/cart', [OrderController::class, 'show'])->middleware('auth')->name('cart');
 
