@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use http\Client\Response;
 use Illuminate\Http\Request;
 use App\Models\Order;
 
@@ -24,4 +25,21 @@ class OrderController extends Controller
         return $total;
     }
 
+    public function add(Request $request)
+    {
+        $order = new Order();
+        $order->user_id = $request->user()->id;
+        $order->product_id = $request->id;
+        $order->amount = $request->amount;
+
+        $order->save();
+
+        return redirect(route('products'));
+    }
+
+    public function delete(Request $request){
+        $order = Order::find($request->id);
+        $order->delete();
+        return redirect(route('cart'));
+    }
 }

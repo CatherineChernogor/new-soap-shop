@@ -19,5 +19,8 @@ Route::get('/', function () {
 });
 Route::get('/home', [ProductController::class, 'show'])->middleware('auth')->name('products');
 Route::get('/product/{id}', [ProductController::class, 'view'])->middleware('auth')->name('single_product');
+Route::post('/add', [OrderController::class, 'add'])->middleware('auth')->name('add_order');
+
 Route::get('/cart', [OrderController::class, 'show'])->middleware('auth')->name('cart');
+Route::post('/cart/delete', [OrderController::class, 'delete'])->middleware('auth')->name('delete_order');
 

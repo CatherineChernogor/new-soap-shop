@@ -28,7 +28,13 @@
                         <td class="pl-4 pr-4">${{$line->product->price}}</td>
                         <td class="pl-4 pr-4">{{$line->amount}}</td>
                         <td class="pl-4 pr-4">${{$line->amount*$line->product->price}}</td>
-                        <td><a class="text-danger" href="#">Delete</a></td>
+                        <td>
+                            <form action="{{route('delete_order')}}" method="post">
+                                <input type="hidden" name="id" value="{{$line->id}}">
+                                {{@csrf_field()}}
+                                <button class="btn btn-outline-danger" type="submit">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
                 <tr class="">
@@ -37,7 +43,7 @@
                     <td></td>
                     <td></td>
                     <td class="text-danger h3 align-middle">${{$sum}}</td>
-                    <td><a class="btn btn-outline-danger" href="#">Buy now</a></td>
+                    <td><a class="btn btn-warning" href="#">Buy now</a></td>
                 </tr>
                 </tbody>
             </table>
