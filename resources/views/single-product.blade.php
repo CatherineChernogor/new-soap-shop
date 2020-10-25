@@ -15,8 +15,7 @@
                     <input type="hidden" name="product_id" value="{{$product->id}}">
                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <div class="group-form w-75 row pl-3">
-                        <input class="form-control w-25" id="roinp" type="number" name="amount" value=""
-                               placeholder="0"
+                        <input class="form-control w-25" id="roinp" type="number" name="amount" placeholder="0"
                                readonly>
                         <button class="btn btn-outline-primary rounded-pill ml-2" type="button"
                                 onclick="

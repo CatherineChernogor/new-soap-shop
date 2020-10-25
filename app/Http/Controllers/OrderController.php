@@ -29,7 +29,7 @@ class OrderController extends Controller
     {
         $order = new Order();
         $order->user_id = $request->user()->id;
-        $order->product_id = $request->id;
+        $order->product_id = $request->product_id;
         $order->amount = $request->amount;
 
         $order->save();
