@@ -2,20 +2,40 @@
 
 @section('content')
     <div class="container">
-        <div class="row-xl justify-content-center">
+        <div class="row justify-content-center">
 
-            <div class="col">
-                <img src="{{$product->picture_url}}" class="w-100" alt="soap picture">
+            <div class="col-6 mt-5">
+                <img src="{{$product->picture_url}}" class="w-100 img-fluid" alt="soap picture">
             </div>
-            <div class="col">
-                <p class="h2">{{$product->name}} </p>
+            <div class="col-6 mt-5">
+                <p class="h2 text-capitalize">{{$product->name}} </p>
                 <p class="h3">${{$product->price}}</p>
-                <form action="" method="post">
-                    <input type="hidden" name="id" value="{{$product->id}}">
-                    <input type="number" name="amount" placeholder="0"><br>
-                    <button class="btn btn-primary" type="submit">Add to cart</button>
+
+                <form action="{{route('add_order')}}" method="post">
+                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                    <div class="group-form w-75 row pl-3">
+                        <input class="form-control w-25" id="roinp" type="number" name="amount" value=""
+                               placeholder="0"
+                               readonly>
+                        <button class="btn btn-outline-primary rounded-pill ml-2" type="button"
+                                onclick="
+                                let e = document.getElementById('roinp');
+                                e.value = Number(e.value)+1"
+                        >+
+                        </button>
+                        <button class="btn btn-outline-primary rounded-pill ml-2" type="button"
+                                onclick="
+                                let e = document.getElementById('roinp');
+                                e.value > 0? e.value = Number(e.value)-1: 0;"
+                        >-
+                        </button>
+                        <button class="btn btn-outline-primary ml-4" type="submit">Add to cart</button>
+                    </div>
+                    {{@csrf_field()}}
+
                 </form>
-                <p class="">{{$product->content}}</p>
+                <p class="mt-4">{{$product->content}}</p>
             </div>
         </div>
     </div>
