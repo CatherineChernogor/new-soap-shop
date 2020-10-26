@@ -8,7 +8,7 @@
 </p>
 
 
-## About progect
+## About project
 That's simple online soap shop. To open admin page, register with 'admin@admin.com' 
 
 ## Instalation
