@@ -43,4 +43,5 @@ class OrderController extends Controller
         $order->delete();//need to be cascade
         return redirect()->route('cart')->with('del_from_cart_message', 'Successfully deleted from cart');
     }
+
 }

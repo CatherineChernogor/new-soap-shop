@@ -8,6 +8,10 @@
             <div class="alert alert-success">{{session()->get('add_to_cart_message')}}</div>
         @endif
 
+        @if(session()->has('buy_message'))
+            <div class="alert alert-success">{{session()->get('buy_message')}}</div>
+        @endif
+
         @if(count($products)<0)
             <div class="d-flex align-item-center row">
                 <div class="h4 text-center text-muted col">There's no products yet</div>

@@ -24,6 +24,7 @@ Route::post('/cart/add', [OrderController::class, 'add'])->middleware('auth')->n
 
 Route::get('/cart', [OrderController::class, 'show'])->middleware('auth')->name('cart');
 Route::post('/cart/delete', [OrderController::class, 'delete'])->middleware('auth')->name('delete_order');
+Route::get('/cart/buy', [AdminOrderController::class, 'buy'])->middleware('auth')->name('buy');
 
 Route::get('/admin/products', [AdminProductController::class, 'show'])->middleware('auth')->name('admin_products');
 Route::post('/admin/products/create', [AdminProductController::class, 'create'])->middleware('auth')->name('create_product');

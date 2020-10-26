@@ -10,33 +10,28 @@
         <table class="table">
             <thead>
             <tr>
-                <th class="pl-4 pr-4" scope="col">ID</th>
+                <th class="pl-4 pr-4" scope="col">UUID</th>
                 <th class="pl-4 pr-4" scope="col">Date</th>
+                <th class="pl-4 pr-4" scope="col">User_id</th>
                 <th class="pl-4 pr-4" scope="col">Name</th>
                 <th class="pl-4 pr-4" scope="col">Price</th>
                 <th class="pl-4 pr-4" scope="col">Amount</th>
                 <th class="pl-4 pr-4" scope="col">Status</th>
-                <th class="pl-4 pr-4" scope="col">Edit status</th>
 
             </tr>
             </thead>
             <tbody>
 
             @foreach($orders as $order)
+
                 <tr class="">
-                    <td class="">{{$order->id}}</td>
+                    <td>{{$order->uuid}}</td>
                     <td>{{$order->created_at}}</td>
-                    <td class="title pl-4">{{$order->name}} </td>
-                    <td class="pl-4 pr-4">${{$order->price}}</td>
+                    <td>{{$order->user_id}}</td>
+                    <td class="title pl-4">{{$order->product->name}} </td>
+                    <td class="pl-4 pr-4">${{$order->product->price}}</td>
                     <td class="pl-4 pr-4">{{$order->amount}}</td>
                     <td class="pl-4 pr-4">{{$order->status}}</td>
-                    <td>
-                        <form action="#" method="post">
-                            <input type="hidden" name="id" value="{{$order->id}}">
-                            {{@csrf_field()}}
-                            <button class="btn btn-outline-danger" type="submit">Edit status</button>
-                        </form>
-                    </td>
 
                 </tr>
             @endforeach
