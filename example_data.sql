@@ -10,3 +10,13 @@ insert into `products` (`name`, `price`, `picture_url`, `content`) VALUES
 ('1','5','2'),
 ('1','3','1'),
 ('1','4','7');
+insert into `products` (`id`,`name`, `price`, `picture_url`, `content`) VALUES
+(1,'soap №1', 3, 'https://source.unsplash.com/WLUHO9A_xik/1600x900', 'Lorem ipsum dolor si');
+
+-- buy btn
+-- soft delete
+-- alert to buy
+-- comments to single page
+-- admin - orders
+-- admin - navbar
+

@@ -34,12 +34,13 @@ class OrderController extends Controller
 
         $order->save();
 
-        return redirect(route('products'));
+        return redirect()->route('products')->with('add_to_cart_message', 'Successfully added to cart');
     }
 
-    public function delete(Request $request){
+    public function delete(Request $request)
+    {
         $order = Order::find($request->id);
-        $order->delete();
-        return redirect(route('cart'));
+        $order->delete();//need to be cascade
+        return redirect()->route('cart')->with('del_from_cart_message', 'Successfully deleted from cart');
     }
 }

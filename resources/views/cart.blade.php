@@ -3,6 +3,9 @@
 @section('content')
     <div class="container ">
         <p class="h3 mt-5 ">My cart</p>
+        @if(session()->has('del_from_cart_message'))
+            <div class="alert alert-success">{{session()->get('del_from_cart_message')}}</div>
+        @endif
         @if(count($cart)<=0)
             <div class="d-flex align-item-center row">
                 <div class="h4 text-center text-muted col">Your cart is empty</div>

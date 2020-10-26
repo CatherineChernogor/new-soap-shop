@@ -19,19 +19,4 @@ class ProductController extends Controller
         return view('single-product', ['product' => $product]);
     }
 
-    /* to admin
-        public function create(Request $request)
-        {
-            $product = new Product();
-
-            $product->name = $request->name;
-            $product->price = $request->price;
-            $product->picture_url = $request->picture_url;
-            $product->content = $request->content;
-
-            $product->save();
-
-            return redirect('/');
-        }
-    */
 }
