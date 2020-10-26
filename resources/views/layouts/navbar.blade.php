@@ -29,8 +29,13 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
-
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            @if( Auth::user()->email == 'admin@admin.com')
+                                <a class="dropdown-item"
+                                   href="{{ route('admin_products') }}">{{ __('Admin - products') }}</a>
+                                <a class="dropdown-item"
+                                   href="{{ route('admin_orders') }}">{{ __('Admin - orders') }}</a>
+                            @endif
                             <a class="dropdown-item" href="{{ route('cart') }}">{{ __('Cart') }}</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="
