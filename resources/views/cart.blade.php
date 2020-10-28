@@ -24,13 +24,14 @@
                 </thead>
                 <tbody>
                 @foreach($cart as $line)
+
                     <tr class="">
-                        <td><img class="rounded img-fluid" src="{{$line->product->picture_url}}" alt="soap picture">
+                        <td><img class="rounded img-fluid" src="{{$line->picture_url}}" alt="soap picture">
                         </td>
-                        <td class="title pl-4">{{$line->product->name}} </td>
-                        <td class="pl-4 pr-4">${{$line->product->price}}</td>
+                        <td class="title pl-4">{{$line->name}} </td>
+                        <td class="pl-4 pr-4">${{$line->price}}</td>
                         <td class="pl-4 pr-4">{{$line->amount}}</td>
-                        <td class="pl-4 pr-4">${{$line->amount*$line->product->price}}</td>
+                        <td class="pl-4 pr-4">${{$line->amount*$line->price}}</td>
                         <td>
                             <form action="{{route('delete_order')}}" method="post">
                                 <input type="hidden" name="id" value="{{$line->id}}">

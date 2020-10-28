@@ -6,15 +6,15 @@
         @if(session()->has('product_message'))
             <div class="alert alert-success">{{session()->get('product_message')}}</div>
         @endif
-        <!-- Add product to Products -->
+    <!-- Add product to Products -->
         <p class="h4 mt-5 ">Add product</p>
 
         @if ($errors->any())
             <div class="alert alert-danger">You have errors to fix</div>
         @endif
 
-
         <form action="{{route('create_product')}}" method="post">
+
             <div class="form-group">
                 <label>Product's name</label>
                 <input type="text" class="form-control" name="name" placeholder="Soap №345" value="{{@old('name')}}">
@@ -42,8 +42,8 @@
 
             <div class="form-group">
                 <label>Product's content</label>
-                <textarea class="form-control" type="text" name="content" value="{{@old('content')}}"
-                          placeholder="Lorem ipsum dolor sit amet..."></textarea>
+                <textarea class="form-control" type="text" name="content"
+                          placeholder="Lorem ipsum dolor sit amet...">{{@old('content')}}</textarea>
                 @error('content')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -80,13 +80,7 @@
                     <td class="title pl-4">{{$product->name}} </td>
                     <td class="pl-4 pr-4">${{$product->price}}</td>
                     <td class="pl-4 pr-4">{{$product->content}}</td>
-                    <td>
-                        <form action="#" method="post">
-                            <input type="hidden" name="id" value="{{$product->id}}">
-                            {{@csrf_field()}}
-                            <button class="btn btn-outline-danger" type="submit">Edit</button>
-                        </form>
-                    </td>
+
                     <td>
                         <form action="{{route('delete_product')}}" method="post">
                             <input type="hidden" name="id" value="{{$product->id}}">

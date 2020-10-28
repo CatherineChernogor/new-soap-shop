@@ -16,17 +16,11 @@ class AdminOrderController extends Controller
         return view('admin.orders', ['orders' => $orders]);
     }
 
-    public function editStatus()
-    {
-
-    }
-
     public function buy(Request $request)
     {
         $orders = Order::all()->where('user_id', $request->user()->id);
         $uuid = Str::uuid();
         foreach ($orders as $order) {
-            //dd($order);
             $application = new Application();
             $application->product_id = $order->product_id;
             $application->amount = $order->amount;
@@ -37,7 +31,6 @@ class AdminOrderController extends Controller
             $application->save();
             Order::find($order->id)->delete();
         }
-
         return redirect()->route('products')->with('buy_message', 'You successfully purchased all items');
     }
 }

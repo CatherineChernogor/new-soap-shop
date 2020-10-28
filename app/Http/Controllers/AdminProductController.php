@@ -43,7 +43,8 @@ class AdminProductController extends Controller
     public function delete(Request $request)
     {
         $order = Product::find($request->id);
-        $order->delete();//make on cascade
+        $order->delete();
         return redirect(route('admin_products'));
     }
+
 }

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\User;
 use http\Client\Response;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\isNull;
 
 class OrderController extends Controller
 {
@@ -13,14 +16,28 @@ class OrderController extends Controller
     {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
-        return view('cart', ['cart' => $user->orders, 'sum' => $this->countSum($user->orders)]);
+        $orders_p = $user->orders->load('product');
+        //dd($orders[1]->where('relation', null)); // check relations
+
+        $products = [];
+        foreach ($orders_p as $key => $order) {
+            $product = Product::find($order->product_id);
+
+            if (!empty($product)) {
+                $product['amount'] = $order->amount;
+                array_push($products, $product);
+            }
+        }
+        //dd($products);
+        return view('cart', ['cart' => $products, 'sum' => $this->countSum($products)]);
     }
 
     public function countSum($cart)
     {
         $total = 0;
+        //dd($cart);
         foreach ($cart as $line) {
-            $total += $line->amount * $line->product->price;
+            $total += $line->amount * $line->price;
         }
         return $total;
     }
@@ -40,7 +57,7 @@ class OrderController extends Controller
     public function delete(Request $request)
     {
         $order = Order::find($request->id);
-        $order->delete();//need to be cascade
+        $order->delete();
         return redirect()->route('cart')->with('del_from_cart_message', 'Successfully deleted from cart');
     }
 
