@@ -28,14 +28,12 @@ class OrderController extends Controller
                 array_push($products, $product);
             }
         }
-        //dd($products);
         return view('cart', ['cart' => $products, 'sum' => $this->countSum($products)]);
     }
 
     public function countSum($cart)
     {
         $total = 0;
-        //dd($cart);
         foreach ($cart as $line) {
             $total += $line->amount * $line->price;
         }

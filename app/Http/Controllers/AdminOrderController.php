@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\BuyEvent;
 use App\Models\Application;
 use App\Models\Order;
 use App\Models\Product;
@@ -31,6 +32,7 @@ class AdminOrderController extends Controller
             $application->save();
             Order::find($order->id)->delete();
         }
+        event(new BuyEvent($request->user));
         return redirect()->route('products')->with('buy_message', 'You successfully purchased all items');
     }
 }

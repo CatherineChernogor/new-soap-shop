@@ -2,7 +2,7 @@
 @section('title', 'Home - Catalog')
 @section('content')
     <div class="container">
-        <p class="h3 mt-5">Home catalog</p>
+    <p class="h3 mt-5">Home catalog</p>
 
         @if(session()->has('add_to_cart_message'))
             <div class="alert alert-success">{{session()->get('add_to_cart_message')}}</div>

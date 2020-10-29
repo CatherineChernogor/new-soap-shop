@@ -3,6 +3,11 @@
 @section('content')
     <div class="container ">
         <p class="h3 mt-5 ">My cart</p>
+
+
+
+
+
         @if(session()->has('del_from_cart_message'))
             <div class="alert alert-success">{{session()->get('del_from_cart_message')}}</div>
         @endif
